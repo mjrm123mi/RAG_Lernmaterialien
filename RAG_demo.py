@@ -5,9 +5,14 @@ from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 from ollama import chat
 import streamlit as st
+from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 
 # load the document
-docs = PyPDFLoader("Data/Lineare_Modelle.pdf").load()
+#docs = PyPDFLoader("Data/Lineare_Modelle.pdf").load()
+
+# Lädt alle PDFs aus dem angegebenen Ordner
+loader = DirectoryLoader('./Data', glob="*.pdf", loader_cls=PyPDFLoader)
+docs = loader.load()
 
 # split the document into chunks
 splitter = RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=1500) #hier anpassen möglich
