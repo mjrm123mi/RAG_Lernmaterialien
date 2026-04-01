@@ -8,14 +8,10 @@ import streamlit as st
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 
 # load the document
-#docs = PyPDFLoader("Data/Lineare_Modelle.pdf").load()
-
-# Lädt alle PDFs aus dem angegebenen Ordner
-loader = DirectoryLoader('./Data', glob="*.pdf", loader_cls=PyPDFLoader)
-docs = loader.load()
+docs = PyPDFLoader("Data/windows-whats-new.pdf").load()
 
 # split the document into chunks
-splitter = RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=1500) #hier anpassen möglich
+splitter = RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=1500)
 chunks = splitter.split_documents(docs)
 
 # embed the chunks and store them in chroma db
@@ -26,12 +22,12 @@ vectorstore = Chroma.from_documents(chunks, embeddings, persist_directory="chrom
 # retrieve the most relevant chukns from the vectorstore
 def retrieve(query: str) -> str:
     results = vectorstore.similarity_search(query, k=3)
-    return "\n\n".join([doc.page_content for doc in results]) #returnt die dokumente die wir haben
+    return "\n\n".join([doc.page_content for doc in results])
 
 
 def generate_answer(query: str, context: str) -> str:
     response = chat(
-        model="gemma2:latest", #modell angepasst
+        model="gemma2:latest",
         messages=[
             {"role": "user", "content": f"Answer the question based on the context provided.\n\nContext: {context}"},
             {"role": "user", "content": query}
@@ -40,9 +36,9 @@ def generate_answer(query: str, context: str) -> str:
     return response["message"]["content"]
 
 
-st.title("Lineare Regression RAG with Ollama & Chroma")
+st.title("Windows 11 RAG with Ollama & Chroma")
 
-user_query = st.chat_input("Stelle eine Frage über lineare Regression:")
+user_query = st.chat_input("Ask a question about Windows 11:")
 
 if user_query:
     with st.spinner("Retrieving relevant information..."):
