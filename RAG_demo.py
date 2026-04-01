@@ -8,7 +8,7 @@ import streamlit as st
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 
 # load the document
-docs = PyPDFLoader("Data/windows-whats-new.pdf").load()
+docs = PyPDFLoader("Data/2603.27006v1.pdf").load()
 
 # split the document into chunks
 splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=150)
@@ -48,7 +48,7 @@ def generate_answer(query: str, context: str) -> str:
     return response["message"]["content"]
 
 
-st.title("Windows 11 RAG with Ollama & Chroma")
+st.title("RAG fuers Lernen")
 
 user_query = st.chat_input("Ask a question about Windows 11:")
 
