@@ -1,0 +1,10 @@
+streamlit
+langchain-community
+langchain-ollama
+langchain-chroma
+ollama
+torchvision
+torch
+transformers
+sentence-transformers
+pypdf
