@@ -15,7 +15,7 @@ splitter = RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=1500)
 chunks = splitter.split_documents(docs)
 
 # embed the chunks and store them in chroma db
-embeddings = OllamaEmbeddings(model="gemma2:latest")
+embeddings = OllamaEmbeddings(model="gemma2:2b")
 vectorstore = Chroma.from_documents(chunks, embeddings, persist_directory="chroma_db")
 
 
@@ -27,7 +27,7 @@ def retrieve(query: str) -> str:
 
 def generate_answer(query: str, context: str) -> str:
     response = chat(
-        model="gemma2:latest",
+        model="gemma2:2b",
         messages=[
             {"role": "user", "content": f"Answer the question based on the context provided.\n\nContext: {context}"},
             {"role": "user", "content": query}
