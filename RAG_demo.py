@@ -5,6 +5,7 @@ from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 from ollama import chat
 import streamlit as st
+from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 
 # load the document
 docs = PyPDFLoader("Data/windows-whats-new.pdf").load()
