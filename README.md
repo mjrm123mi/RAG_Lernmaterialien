@@ -1,7 +1,7 @@
 Wie starten?
 
 Aktuell
- (alte Chroma löschen bei Aenderungen der pdfs):
+ (alte Chroma löschen bei Aenderungen der pdfs,chunksize, overlap oder Embedding-Modell-wechsel):
 rm -rf chroma_db 
 
 Index bauen:
