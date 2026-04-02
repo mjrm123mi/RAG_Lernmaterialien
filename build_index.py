@@ -1,14 +1,4 @@
 #Diese Datei liest deine PDFs, splittet sie in Chunks und speichert den Chroma-Index lokal in chroma_db/.
-
-'''docs = PyPDFDirectoryLoader("Data/").load()
-
-splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=150)
-chunks = splitter.split_documents(docs)
-
-embeddings = OllamaEmbeddings(model="gemma2:2b")
-vectorstore = Chroma.from_documents(chunks, embeddings, persist_directory="chroma_db")'''
-
-
 import os
 import shutil
 from langchain_community.document_loaders import PyPDFDirectoryLoader
