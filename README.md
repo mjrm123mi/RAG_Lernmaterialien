@@ -1,5 +1,16 @@
 Wie starten?
 
+Aktuell
+ (alte Chroma löschen bei Aenderungen der pdfs):
+rm -rf chroma_db 
+
+Index bauen:
+python build_index.py
+
+starten:
+streamlit run app.py
+
+
 
 -----------
 Olama starten:
