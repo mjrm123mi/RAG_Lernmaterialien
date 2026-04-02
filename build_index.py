@@ -24,19 +24,19 @@ def split_documents(docs):
     return splitter.split_documents(docs)
 
 def build_vectorstore(chunks):
-    embeddings = OllamaEmbeddings(model="gemma2:2b")
+    embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
     # Optional: alten Index löschen und komplett neu aufbauen
     if os.path.exists(CHROMA_DIR):
         shutil.rmtree(CHROMA_DIR)
 
-    vectorstore = Chroma.from_documents(
+    Chroma.from_documents(
         documents=chunks,
         embedding=embeddings,
         persist_directory=CHROMA_DIR,
         collection_name=COLLECTION_NAME,
     )
-    return vectorstore
+
 
 def main():
     print("Lade PDFs...")

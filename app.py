@@ -5,13 +5,14 @@ from langchain_chroma import Chroma
 
 CHROMA_DIR = "chroma_db"
 COLLECTION_NAME = "pdfs"
+CHAT_MODEL = "gemma2:2b"
 
 st.set_page_config(page_title="RAG fürs Lernen")
 st.title("RAG fürs Lernen")
 
 @st.cache_resource
 def load_vectorstore():
-    embeddings = OllamaEmbeddings(model="gemma2:2b")
+    embeddings = OllamaEmbeddings(model="nomic-embed-text")
     vectorstore = Chroma(
         persist_directory=CHROMA_DIR,
         embedding_function=embeddings,
