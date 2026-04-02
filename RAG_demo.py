@@ -6,9 +6,10 @@ from langchain_chroma import Chroma
 from ollama import chat
 import streamlit as st
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 
 # load the document
-docs = PyPDFLoader("Data/2603.27006v1.pdf").load()
+docs = PyPDFDirectoryLoader("Data/").load()
 
 # split the document into chunks
 splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=150)
