@@ -21,9 +21,20 @@ def load_vectorstore():
 
 vectorstore = load_vectorstore()
 
-def retrieve(query: str) -> str:
+def retrieve_with_sources(query: str):
     results = vectorstore.similarity_search(query, k=5)
-    return "\n\n".join([doc.page_content for doc in results])
+    return  results
+
+def format_context(results):
+    parts = []
+    for i, doc in enumerate(results, start=1):
+        source = doc.metadata.get("source", "unbekannt")
+        page = doc.metadata.get("page", "?")
+        text = doc.page_content
+        parts.append(f"[Treffer {i} | Quelle: {source} | Seite: {page}]\n{text}")
+    return "\n\n".join(parts)
+
+
 
 def generate_answer(query: str, context: str) -> str:
     response = chat(
@@ -50,9 +61,13 @@ user_query = st.chat_input("Stelle eine Frage zu deinen PDFs")
 
 if user_query:
     with st.spinner("Suche relevante Stellen..."):
-        context = retrieve(user_query)
+        docs = retrieve_with_sources(user_query)
+        context = format_context(docs)
 
     with st.spinner("Generiere Antwort..."):
         answer = generate_answer(user_query, context)
 
     st.write("**Antwort:**", answer)
+
+    with st.expander("Gefundene Textstellen anzeigen"):
+        st.text(context)
