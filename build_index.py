@@ -5,11 +5,15 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
+from transformers import AutoTokenizer, AutoModelForMaskedLM
+
+tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-german-cased")
+model = AutoModelForMaskedLM.from_pretrained("google-bert/bert-base-german-cased")
 
 DATA_DIR = "Data"
 CHROMA_DIR = "chroma_db"
 COLLECTION_NAME = "pdfs"
-EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
+EMBEDDING_MODEL_NAME = "google-bert/bert-base-german-cased"
 
 def load_documents():
     loader = PyPDFDirectoryLoader(DATA_DIR)
