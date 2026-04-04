@@ -1,18 +1,18 @@
 import streamlit as st
 from ollama import chat
-from langchain_ollama import OllamaEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 CHROMA_DIR = "chroma_db"
 COLLECTION_NAME = "pdfs"
 CHAT_MODEL = "gemma2:2b"
-
+EMBEDDING_MODEL_NAME = "google-bert/bert-base-german-cased"
 st.set_page_config(page_title="RAG fürs Lernen")
 st.title("RAG fürs Lernen")
 
 @st.cache_resource
 def load_vectorstore():
-    embeddings = OllamaEmbeddings(model="nomic-embed-text")
+    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
     vectorstore = Chroma(
         persist_directory=CHROMA_DIR,
         embedding_function=embeddings,
@@ -24,7 +24,7 @@ vectorstore = load_vectorstore()
 
 def retrieve_with_sources(query: str):
     results = vectorstore.similarity_search(query, k=5)
-    return  results
+    return results
 
 def format_context(results):
     parts = []
@@ -39,7 +39,7 @@ def format_context(results):
 
 def generate_answer(query: str, context: str) -> str:
     response = chat(
-        model="gemma2:2b",
+        model=CHAT_MODEL,
         messages=[
             {
                 "role": "system",
@@ -47,18 +47,19 @@ def generate_answer(query: str, context: str) -> str:
                     "Du beantwortest Fragen ausschließlich anhand des bereitgestellten Kontexts. "
                     "Wenn die Antwort nicht eindeutig im Kontext steht, antworte exakt mit: "
                     "'Ich weiß es nicht'. Erfinde nichts und nutze kein Weltwissen."
-                )
+                ),
             },
             {
                 "role": "user",
-                "content": f"Beantworte die Frage nur mit Hilfe dieses Kontexts:\n\n{context}\n\nFrage: {query}"
-            }
+                "content": f"Beantworte die Frage nur mit Hilfe dieses Kontexts:\n\n{context}\n\nFrage: {query}",
+            },
         ],
-        options={"temperature": 0}
+        options={"temperature": 0},
     )
     return response["message"]["content"]
 
-user_query = st.chat_input("Stelle eine Frage zu deinen PDFs")
+
+user_query = st.chat_input("Stelle eine Frage zu den PDFs")
 
 if user_query:
     with st.spinner("Suche relevante Stellen..."):
@@ -72,3 +73,5 @@ if user_query:
 
     with st.expander("Gefundene Textstellen anzeigen"):
         st.text(context)
+
+    st.caption(f"Embeddings: {EMBEDDING_MODEL_NAME} | LLM: {CHAT_MODEL}")
