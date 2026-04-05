@@ -1,0 +1,12 @@
+10 passende Beispielfragen fuer deutschsprachiges RAG
+
+1. Was sind Hyperparameter?
+2. Was ist der Unterschied zwischen Overfitting und Underfitting?
+3. Wofür werden Validierungsdaten verwendet?
+4. Was ist Cross Validation?
+5. Was bedeuten Bias und Varianz?
+6. Warum führt ein kleines k bei k-NN oft zu höherer Modellkomplexität?
+7. Was ist der Unterschied zwischen Ridge- und Lasso-Regularisierung?
+8. Was messen Precision und Recall?
+9. Welche Möglichkeiten gibt es zum Umgang mit fehlenden Werten?
+10. Warum ist Skalierung für k-NN wichtig?
