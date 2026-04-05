@@ -1,4 +1,4 @@
-#Diese Datei liest PDFs, splittet sie in Chunks und speichert den Chroma-Index lokal in chroma_db/.
+# Diese Datei liest PDFs, splittet sie in Chunks und speichert den Chroma-Index lokal in chroma_db/.
 import os
 import shutil
 from langchain_community.document_loaders import PyPDFDirectoryLoader
@@ -23,7 +23,7 @@ def load_documents():
 
 def split_documents(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
+        chunk_size=800,
         chunk_overlap=200,
         separators=["\n\n", "\n", ". ", "! ", "? ", " "],
     )

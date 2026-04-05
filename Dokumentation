@@ -108,3 +108,33 @@ die richtige Stelle zu identifizieren. Es könnte auch sein, dass die ungüngsti
 
 
 TODO: Spezifischere Fragen stellen die auf deutsch sind und Performance verbessern
+
+Allgemineere Fragen funktionieren nicht so gut, BERT kann die Nähe schlechter einscghätzen. Top k treffer enthalten irgentwas mit ML aber nicht das Dokument oder die Stelle.
+
+Zeilenumbrüche problen?
+-altes modell  verwenden sentence transformers mpnet base v2
+-k erhöhn 8-10 ......
+-vlt kleinere chunks und overlap verschieden
+-Wie deinfiert das Dokument DS Overfitting?
+
+
+Anderes Modell:
+Frage 1 = (0) (1) Das Modell antwortet zwar dass es nicht weiß, aber zeigt bei Treffer 1 das richtige Dokument mit richtiger Textstelle an.
+Frage 2 = (0.5) (0.5)
+Frage 3 = (1) (0)
+
+Ab hier nochmal Chunks auf 800 angepasst.
+Frage 1 (0)
+Frage 2 = (0.5)
+Frage 3 = (0.5)
+Frage 4 = (0)
+Frage 5 = (0)
+Nach Chunk Size Anpassung auf 800 wird die Performance nicht besser.
+
+Chunksize 800 und k = 10
+Frage 1 (0)
+Frage 2 = (0)
+Frage 3 = (0.5)
+Frage 4 = (0)
+Frage 5 = (0.5)
+Die Perfromance wird auch nicht mit größerem k =10 und kleinerem Chunk=800 besser.
