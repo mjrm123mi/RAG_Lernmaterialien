@@ -23,7 +23,7 @@ def load_vectorstore():
 vectorstore = load_vectorstore()
 
 def retrieve_with_sources(query: str):
-    results = vectorstore.similarity_search(query, k=10)
+    results = vectorstore.similarity_search(query, k=5)
     return results
 
 def format_context(results):

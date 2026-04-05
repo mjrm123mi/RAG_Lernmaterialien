@@ -23,7 +23,7 @@ def load_documents():
 
 def split_documents(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
+        chunk_size=1000,
         chunk_overlap=200,
         separators=["\n\n", "\n", ". ", "! ", "? ", " "],
     )
