@@ -187,4 +187,3 @@ Frage 6 = (0.5) Das Modell antwortet mit Nein, was falsch ist. Treffer 2 ist all
 
 Fazit: Das sentence-transformers/paraphrase-multilingual-mpnet-base-v2 Modell verbessert die Leistung erheblich.
         Von 5 Fragen werden 4 richtig beantwortet. Die letzte Frage ist fürs Modell nicht ganz so leicht zu beantworten, weil manchmal k's durch Formatierungen nicht angezeigt werden, was möglicherweise Einfluss auf die Antwortqualität hat.
-
