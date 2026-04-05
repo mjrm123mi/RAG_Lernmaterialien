@@ -108,3 +108,61 @@ die richtige Stelle zu identifizieren. Es könnte auch sein, dass die ungüngsti
 
 
 TODO: Spezifischere Fragen stellen die auf deutsch sind und Performance verbessern
+
+Allgemineere Fragen funktionieren nicht so gut, BERT kann die Nähe schlechter einscghätzen. Top k treffer enthalten irgentwas mit ML aber nicht das Dokument oder die Stelle.
+
+Zeilenumbrüche problen?
+-altes modell  verwenden sentence transformers mpnet base v2
+-k erhöhn 8-10 ......
+-vlt kleinere chunks und overlap verschieden
+-Wie deinfiert das Dokument DS Overfitting?
+
+
+Anderes Modell:
+Frage 1 = (0) (1) Das Modell antwortet zwar dass es nicht weiß, aber zeigt bei Treffer 1 das richtige Dokument mit richtiger Textstelle an.
+Frage 2 = (0.5) (0.5)
+Frage 3 = (1) (0)
+
+Ab hier nochmal Chunks auf 800 angepasst.
+Frage 1 (0)
+Frage 2 = (0.5)
+Frage 3 = (0.5)
+Frage 4 = (0)
+Frage 5 = (0)
+Nach Chunk Size Anpassung auf 800 wird die Performance nicht besser.
+
+Chunksize 800 und k = 10
+Frage 1 (0)
+Frage 2 = (0)
+Frage 3 = (0.5)
+Frage 4 = (0)
+Frage 5 = (0.5)
+Die Perfromance wird auch nicht mit größerem k =10 und kleinerem Chunk=800 besser.
+
+
+Daten verändert:
+9 Artikel von arxiv.org und ein eigenes DS-PruefungsfragenText Dokument
+Frage 1 (0)
+Frage 2 = (0)
+Frage 3 = (1)
+Frage 4 = (1)
+Frage 5 = (0.5) Das Modell antwortet mit Nein, zeigt aber die richtige Stelle und antwortet mit der Quelle richtig.
+
+Um zu testen ob meine Pdfs zu verrauscht sind,
+bzw. die Qualität meiner PDFs die Ursache ist,
+dass  und die Hitrate so niedrig ist, habe ich einen Test mit künstlich erstellten PDFs gemacht.
+
+Fragen:
+1. Was sind Hyperparameter? (1)
+2. Was ist der Unterschied zwischen Overfitting und Underfitting?(1)
+3. Wofür werden Validierungsdaten verwendet? (1)
+4. Was ist Cross Validation?(1)
+5. Was bedeuten Bias und Varianz?(1)
+
+Wie zu erwarten, sind alle Antworten korrekt, es wird das richtige Dokument gefunden und auch die richtige Textstelle.
+Weil die Dokumente immer nur eine Seite haben,
+ist die Suche natürlich auch einfacher.
+Es gibt keine Zeilenumbrüche, die das Retrieval erschweren könnten.
+Es gibt auch weniger unpassende Dokumente, die gefunden werden könnten, da es nur 10 Dokumente gibt.
+Das zeigt, dass die Qualität der PDFs und die Formatierung einen großen Einfluss auf die Performance des Retrievals haben können.
+
