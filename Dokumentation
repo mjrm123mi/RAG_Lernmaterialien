@@ -1,0 +1,111 @@
+Evaluation: Groundedness
+
+Testfragen:
+EA = Erwartete Antwort
+
+1. Was ist der Inhalt von Test.pdf?
+EA: 1.1 Abstrakt
+    1.2 Zusammenfassung
+    1.3 Einleitung
+    1.4 Hauptteil
+    1.5 Schluss
+    1.6 Literaturverzeichnniss
+
+2. Was ist ein Hyperparameter?
+EA: Das sind die Parameter die vor dem eigentlichen Training festgelegt werden.
+    Bei k-NN das k. (DS Pruefungsvorbereitung, Seite 14)
+
+3. Wie kann ich den Einfluss von Hyperparametern messen?
+EA: "Das Modell mit verschiedneen Hyperparametern trainieren und die Performance auf den Validierungsdaten
+    vergleichen"
+    (DS Pruefungsvorbereitung, Seite 14)
+
+4. Wie kann ich die optimalen Hyperparameter-Werte finden?
+EA: "...durch die Cross Validation, Grid Search"
+    (DS Pruefungsvorbereitung, Seite 14)
+
+5. Was ist Overfitting?
+EA: Überanpassung: Modell zu komplex -> passt sich an Rauschen in den Trainingsdaten an
+    -> geringer Trainingsfehler, aber hoher Testfehler.
+    (DS Pruefungsvorbereitung, Seite 17)
+
+
+6. "Wenn ein Modell eine hohe Komplexität hat ist das k dann eher klein?"
+EA: "Ja (das Modell ist empfindlich für Rauschen und „zerklüftete“ Entscheidungsgrenzen. Es gibt ein Overfitting-Risiko.
+    Bei einem großen k; ist die Modellkomplexität gering. Es werden viele Nachbarn gemittelt (der durschnitt berechnet)
+    und die Entscheidungsgrenze ist glatt. Das Modell ist wenig felxibel und es gibt Underfitting-Risiko"
+    (DS Pruefungsvorbereitung, Seite 18)
+
+7. "Was sind Freiheitsgrade?"
+EA: " A: das sind die Parameter die ein Modell lernen muss um sich an die Trainingsdaten anzupassen.
+    Bei einem Polynom mit Grad5 z.b eher flexibel mit hoch und Tiefpunkten.
+    Bei Polynom 1. Grades, weniger Parameter) ist es eine Gerade und kann nur allgemeine Trends abbilden."
+    (DS Pruefungsvorbereitung, Seite 18)
+
+8. "Sind Validierungsdaten das gleiche wie Testdaten?"
+EA: Nein. Validierungsdaten werden während der Modellentwicklung genutzt. Sie dienen zur Auswahl der
+    Hyperparameter (z.b. bestes k bei kNN). Testdaten hingegen werden erst ganz am Ende verwendet. Sie sind für die
+    finale Bewertung des Modells. Sie dürfen nicht zur Modellauswahl oder Hyperparameterauswahl genuzt werden. Sie
+    simmulieren neue, unbekannte Daten. (DS Pruefungsvorbereitung, Seite 15)
+
+9. Was sind die Lernziele von Modellkomplexität und Modellauswahl?
+EA: "-Hyperparameter und ihren Effekt auf Modell-Performanz (am Beispiel von k-NN vorstellen
+     -Zusammenhang zwischen Over-/Underfitting und Modell-Komplexität herstellen
+     -Fehler unterscheiden: Bias vs. Varianz
+     -Validierungsdaten und Cross-Validation für die Modellauswahl einsetzen"
+     (Modellkomplexität und Modellauswahl Seite 1)
+     Schwierigkeit ist hier die Formatierung
+
+10. Was sind Hyperparameter? Beantworte auf Basis vom dem Dokument Modellkomplexität und Modellauswahl.
+EA: -Modelle, die wir trainieren, sollen i.d.R. auf ungesehenen Datensätzen gute Vorhersagen treffen (z.B. wir wollen
+    nicht bereits bestätigte Diagnosen in gesehenen Patient*innen wiederentdecken sondern noch nicht bekannte Erkrankungen rechtzeitig diagnostizieren können)
+    -Wir wollen sicherstellen, dass das trainierte Modell ein relevantes Muster in den Daten erkannt hat, und sich nicht
+    lediglich möglichst viele Zusamenhänge in den Trainingsdaten “gemerkt” hat (mit genügend Freiheitsgraden ist
+    dies machbar)
+    -Muster zu erkennen, die über die gesammelten Datenbeispiele hinweg generalisieren, ist ein fundamentales
+    Problem im Machine Learning und der Statistik allgemein
+    -Da wir den wahren Fehler eines Modells nicht berechnen können, schätzen wir ihn anhand der Testdaten
+    -Bei vielen Lernverfahren gibt es Parameter, die vor dem eigentlichen training festgelegt werden müssen
+    - bei -kNN das k. Solche Variablen heißen Hyperparameter
+    (Modellkomplexität und Modellauswahl Seite 1 und Seite 2)
+    Schwierigkeit ist hier die Formatierung
+
+
+
+
+
+
+Analyse des Ergebnisse:
+Welche Fragen funktionieren gut?
+Welche nicht?
+Was könnten Gründe sein?
+Vermutung: Formatierung, Modellwechsel
+
+
+    Groundedness Evaluation mit top k=5 Dokumente:
+    Vollständig (1)
+    Teilweise (0.5)
+    Gar nicht (0) -> Halluzination
+
+
+Frage 1 = (0) Das Dokument wird nicht gefunden, das Modell antwortet dass es nicht weiß und zählt andere Dokumente auf, die aber unpassend sind.
+Frage 2 = (0.5) Die Antwort ist richtig, aber es wird nicht die EA zurückgegeben und auch keine passende Stelle im Dokument gefunden. Das gefundene Dokument Pruefungsvobereitung und Modellkomplexität sind richtig.
+Frage 3 = (1) Die Antwort ist richtig, beim 5. Treffer wird die erwartete Antwort zurückgegeben. Es wird das richtige Dokument und die richtige Stelle gefunden. Die anderen Treffer sind inhaltlich ebenfalls passend.
+Frage 4 = (0.5) Die Antwort ist teilweise richtig, es werden aber Testdaten mit Validierungsdaten verwechselt. Die gefunden Dokumente sind teilweise passend. Es wird aber nicht das gesuchte Dokument mit der richtigen Antwort gefunden.
+Frage 5 = (0) Das Dokument wird nicht gefunden, das Modell antwortet dass es nicht weiß und zählt andere Dokumente auf, die aber unpassend sind.
+Frage 6 = (0.5) Das Modell antwortet mit Nein, was falsch ist. Treffer 2 ist allerdings passend und wenn sich die Quelle durchgelesen wird, könnte eine aufmerksame Leser:in sich die Frage selber richtig beantworten. Die anderen Treffer sind teilweise passend zu Modellkomplexität, aber beantworten die Frage nicht ganz, ob das k eher klein ist bei hoher Komplexität.
+
+
+Welche Fragen funktionieren gut?
+Frage 3 "Wie kann ich die optimalen Hyperparameter-Werte finden?" funktioniert gut, es wird die erwartete Antwort gefunden und die Dokumente sind passend.
+Vemutlich funktioniert die Frage gut, weil sie spezifisch ist und die Antwort klar definiert ist. Es gibt klare Methoden (Cross Validation, Grid Search) die in den Dokumenten beschrieben werden, was die Suche erleichtert.
+
+Frage 1 "Was ist der Inhalt von Test.pdf?" und Frage 5 "Was ist Overfitting?" funktionieren nicht, aber immerhin halluziniert das Modell nicht (aufgrund der Promtanweisung) und antwortet dass es es nicht weiß.
+Dass Frage 1 nicht beantwortet werden kann, liegt vermutlich am Modellwechsel, weil es zuvor die Frage richtig mit passenden Treffer beantworten konnte.
+Gleiches gilt für die Frage 5. Vorallem weil Overfitting ein englischer Begriff ist. Zudem kann es sein dass die Frage nicht spezifisch genug ist,
+da es verschiedene Definitionen von Overfitting gibt und das Modell möglicherweise Schwierigkeiten hat,
+die richtige Stelle zu identifizieren. Es könnte auch sein, dass die ungüngstigen Formatierungen in den PDFs das Retrieval erschweren.
+
+
+TODO: Spezifischere Fragen stellen die auf deutsch sind
+Frage10: Was sind Hyperparameter? Beantworte auf Basis vom dem Dokument Modellkomplexität und Modellauswahl
