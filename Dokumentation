@@ -173,3 +173,18 @@ Weiteres Modell getestet:
 https://huggingface.co/PM-AI/sts_paraphrase_xlm-roberta-base_de-en
 PM-AI/sts_paraphrase_xlm-roberta-base_de-en
 Ist aber nicht besser, daher verworfen.
+
+
+Weiteres Modell getestet:
+sentence-transformers/paraphrase-multilingual-mpnet-base-v2
+
+Frage 1 = wird ausgelassen weil ich das Test.pdf nun entfernt habe.
+Frage 2 = (1) Die Antwort ist richtig, und es wird nun die EA als 2. Treffer zurückgegeben und die passende Stelle im Dokument gefunden.
+Frage 3 = (1) Die Antwort ist richtig, jetzt wird schon beim 3. Treffer die erwartete Antwort zurückgegeben. Es wird das richtige Dokument und die richtige Stelle gefunden. Die anderen Treffer sind inhaltlich ebenfalls passend.
+Frage 4 = (1) Die Antwort ist richtig, es wird das gesuchte Dokument als 3. Treffer gefunden.
+Frage 5 = (1) Das Dokument wird nun gefunden, mit richtiger Antwort und richtiger Stelle.
+Frage 6 = (0.5) Das Modell antwortet mit Nein, was falsch ist. Treffer 2 ist allerdings passend und wenn sich die Quelle durchgelesen wird, könnte eine aufmerksame Leser:in sich die Frage selber richtig beantworten. Die anderen Treffer sind teilweise passend zu Modellkomplexität, aber beantworten die Frage nicht ganz, ob das k eher klein ist bei hoher Komplexität.
+
+Fazit: Das sentence-transformers/paraphrase-multilingual-mpnet-base-v2 Modell verbessert die Leistung erheblich.
+        Von 5 Fragen werden 4 richtig beantwortet. Die letzte Frage ist fürs Modell nicht ganz so leicht zu beantworten, weil manchmal k's durch Formatierungen nicht angezeigt werden, was möglicherweise Einfluss auf die Antwortqualität hat.
+
