@@ -7,13 +7,13 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 
-tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-german-cased")
-model = AutoModelForMaskedLM.from_pretrained("google-bert/bert-base-german-cased")
+tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/paraphrase-multilingual-mpnet-base-v2")
+model = AutoModelForMaskedLM.from_pretrained("sentence-transformers/paraphrase-multilingual-mpnet-base-v2")
 
 DATA_DIR = "Data"
 CHROMA_DIR = "chroma_db"
 COLLECTION_NAME = "pdfs"
-EMBEDDING_MODEL_NAME = "google-bert/bert-base-german-cased"
+EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 
 def load_documents():
     loader = PyPDFDirectoryLoader(DATA_DIR)

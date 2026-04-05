@@ -6,7 +6,7 @@ from langchain_chroma import Chroma
 CHROMA_DIR = "chroma_db"
 COLLECTION_NAME = "pdfs"
 CHAT_MODEL = "gemma2:2b"
-EMBEDDING_MODEL_NAME = "google-bert/bert-base-german-cased"
+EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 st.set_page_config(page_title="RAG fürs Lernen")
 st.title("RAG fürs Lernen")
 
