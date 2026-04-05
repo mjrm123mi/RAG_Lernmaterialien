@@ -166,3 +166,10 @@ Es gibt keine Zeilenumbrüche, die das Retrieval erschweren könnten.
 Es gibt auch weniger unpassende Dokumente, die gefunden werden könnten, da es nur 10 Dokumente gibt.
 Das zeigt, dass die Qualität der PDFs und die Formatierung einen großen Einfluss auf die Performance des Retrievals haben können.
 
+Damit der RAG aber auch funktional fuer echte Lernuterlagen ist, die oftmals nicht sauber formatiert sind,
+habe ich die künstlich erstellten PDFs wieder verworfen und habe PDFs die repräsentativer für Lernunterlagen sind eingefuegt.
+
+Weiteres Modell getestet:
+https://huggingface.co/PM-AI/sts_paraphrase_xlm-roberta-base_de-en
+PM-AI/sts_paraphrase_xlm-roberta-base_de-en
+Ist aber nicht besser, daher verworfen.
