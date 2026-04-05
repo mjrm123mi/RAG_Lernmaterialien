@@ -107,5 +107,4 @@ da es verschiedene Definitionen von Overfitting gibt und das Modell möglicherwe
 die richtige Stelle zu identifizieren. Es könnte auch sein, dass die ungüngstigen Formatierungen in den PDFs das Retrieval erschweren.
 
 
-TODO: Spezifischere Fragen stellen die auf deutsch sind
-Frage10: Was sind Hyperparameter? Beantworte auf Basis vom dem Dokument Modellkomplexität und Modellauswahl
+TODO: Spezifischere Fragen stellen die auf deutsch sind und Performance verbessern
