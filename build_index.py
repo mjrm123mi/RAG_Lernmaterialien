@@ -7,7 +7,6 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 
-
 DATA_DIR = "Data"
 CHROMA_DIR = "chroma_db"
 COLLECTION_NAME = "pdfs"
@@ -35,8 +34,8 @@ def clean_text(text: str) -> str:
 
 def split_documents(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
+        chunk_size=1000, #500testen (für kürzere fokussierte Abschniutte was für Frgaen von konkreten Definitionen gut wär)
+        chunk_overlap=200, #100testen
         separators=["\n\n", "\n", ". ", "! ", "? ", " "],
     )
     return splitter.split_documents(docs)
