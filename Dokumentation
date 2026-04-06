@@ -187,3 +187,15 @@ Frage 6 = (0.5) Das Modell antwortet mit Nein, was falsch ist. Treffer 2 ist all
 
 Fazit: Das sentence-transformers/paraphrase-multilingual-mpnet-base-v2 Modell verbessert die Leistung erheblich.
         Von 5 Fragen werden 4 richtig beantwortet. Die letzte Frage ist fürs Modell nicht ganz so leicht zu beantworten, weil manchmal k's durch Formatierungen nicht angezeigt werden, was möglicherweise Einfluss auf die Antwortqualität hat.
+
+
+
+Groundedness Evaluation
+Nachdem ich die Bereinigung Funktion clean_text in build_index eingebaut habe:
+
+Frage 1= (0,5) antwortet ich weiß es nicht aber erster Treffer ist richtig.
+Frage 2 = (1) Die Antwort ist richtig, und es wird aber nur noch die EA als 3. Treffer zurückgegeben und die passende Stelle im Dokument gefunden, aber mit falscher Seitenzahl.
+Frage 3 = (1) Die Antwort ist richtig, es wird weiter beim 3. Treffer die erwartete Antwort zurückgegeben.
+Frage 4 = (1) Die Antwort ist richtig, es wird das gesuchte Dokument als 3. Treffer gefunden.
+Frage 5 = (0.5) Die Antwort ist richtig, es wird die richtige Seite als 1. Treffer angezeigt mit passenden Textstellen, aber es wird nicht die EA zurückgegeben. Das Bereinigen sorgt dafür dass "Überanpassung: Modell zu komplex -> ..."" verworfen wird.
+Frage 6 = (0,5) Das Modell antwortet mit Ja, was nun richtig ist. Es werden auch passende Stellen angezeigt zur k Größe und der Entscheidungsgrenze angezeigt. Aber die EA wird nicht zurückgegeben.

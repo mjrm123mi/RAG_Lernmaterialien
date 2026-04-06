@@ -16,7 +16,21 @@ EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-mpnet-base
 def load_documents():
     loader = PyPDFDirectoryLoader(DATA_DIR)
     docs = loader.load()
+
+    # Textbereinigung pro Seite
+    for doc in docs:
+        doc.page_content = clean_text(doc.page_content)
+
     return docs
+
+# Preprocessing
+def clean_text(text: str) -> str:
+    text = text.lower()
+    for ch in ["?", "-", "\n"]: #"-" hat Einfluss auf Frage 6
+        text = text.replace(ch, " ")
+    # Mehrere Leerzeichen auf eins reduzieren
+    text = " ".join(text.split())
+    return text
 
 
 def split_documents(docs):
