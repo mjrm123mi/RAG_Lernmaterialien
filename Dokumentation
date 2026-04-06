@@ -236,4 +236,64 @@ Die Korrektur wird gemacht bevor die Chunks erzeugt werden und es in Chroma gesp
 
 
 --------------
+Zum b) Automatische Metriken
+-Retrieval: Precision@k, Recall@k
+-Antwortqualität: Cosine Similarity
 
+Dokumentation der Ergebnisse und Interpretation:
+
+Konsole:
+
+Frage 1: Was ist ein Hyperparameter?
+Antwort: Hyperparameter sind die Parameter, die vor dem eigentlichen Training festgelegt werden.
+
+Precision@5: 0.20
+Recall@5: 1.00
+Cosine Similarity: 0.73
+--------------------------------------------------
+Frage 2: Wie kann ich den Einfluss von Hyperparametern messen?
+Antwort: Um den Einfluss von Hyperparametern zu messen, trainieren Sie das Modell mit verschiedenen Hyperparametern und vergleichen Sie die Performance auf den Validierungsdaten.
+
+Precision@5: 0.40
+Recall@5: 1.00
+Cosine Similarity: 0.88
+--------------------------------------------------
+Frage 3: Wie kann ich die optimalen Hyperparameter-Werte finden?
+Antwort: Durch die Cross-Validation und Grid Search.
+
+Precision@5: 0.20
+Recall@5: 1.00
+Cosine Similarity: 0.91
+--------------------------------------------------
+Frage 4: Was ist Overfitting?
+Antwort: Overfitting ist ein Phänomen, bei dem ein Modell sich zu gut an die Trainingsdaten anpasst und wenig über das zu vorherzusagende Problem lernt.
+
+Precision@5: 0.40
+Recall@5: 1.00
+Cosine Similarity: 0.68
+--------------------------------------------------
+Frage 5: Sind Validierungsdaten das gleiche wie Testdaten?
+Antwort: Nein.
+
+Precision@5: 0.20
+Recall@5: 1.00
+Cosine Similarity: 0.19
+--------------------------------------------------
+
+ Ergebnisse:
+Durchschnitt Precision@5: 0.280
+Durchschnitt Recall@5: 1.000
+Durchschnitt Cosine Similarity: 0.681
+
+todo: Screenshots 24 und 25 einfeugen
+
+Das Automatische Retrieval funktioniert gut für spezifische Fragen. Teilweise sind die Antworten aber auch sehr kurz.
+Die Cosinus Similarity ist im Schnitt 0.681.
+
+Der Recall liegt bei 1.00 was sehr hoch ist. Das richtige Dokument wird immer gefunden.
+Die Precision ist niedrig, weil auch irrelevante Treffer unter den Top-k sind.
+Durch Finetuning des k's, chunking, gewichtete Suche (z.b. mit BM25, Whoosh)
+aber auch weniger verruschte PDFs und feinere Bereinigung könnte die Precision verbessert werden.
+
+Die manuelle Evaluation zeigt, dass der RAG inhaltlich, semantisch korrekte Antworten liefert. Bei sehr allgemeinen Fragen gibt es aber Schweirigkeiten.
+todo: Tabelle einfuegen + bei manueller Bewertung a) Relevanz und b) Faktentreue (1-5)/ Bezug zu Quellen einfuegen (1-5)
