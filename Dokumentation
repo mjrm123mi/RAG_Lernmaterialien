@@ -226,6 +226,12 @@ mit build_whoosh_index.py:
 (Fuer Schlagwortrelevanz)
 
 
+Fix: Seitenzahlen korrigiert:
+
+Seitenanzahl gefixt, index +1
+Die page-Metadaten werden von 0 basiert auf 1basiert korrigiert.
+PyPDFDirectoryLoader zählt schon bei 0. Daher waren die Seitenzahlen um 1 verschoben.
+Die Korrektur wird gemacht bevor die Chunks erzeugt werden und es in Chroma gespeichert wird. Damit haben die Chunks auch dann die richtigen Seitenzahlen.
 
 
 
