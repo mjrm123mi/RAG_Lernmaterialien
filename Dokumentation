@@ -187,3 +187,47 @@ Frage 6 = (0.5) Das Modell antwortet mit Nein, was falsch ist. Treffer 2 ist all
 
 Fazit: Das sentence-transformers/paraphrase-multilingual-mpnet-base-v2 Modell verbessert die Leistung erheblich.
         Von 5 Fragen werden 4 richtig beantwortet. Die letzte Frage ist fürs Modell nicht ganz so leicht zu beantworten, weil manchmal k's durch Formatierungen nicht angezeigt werden, was möglicherweise Einfluss auf die Antwortqualität hat.
+
+
+
+Groundedness Evaluation
+Nachdem ich die Bereinigung Funktion clean_text in build_index eingebaut habe:
+
+Frage 1= (0,5) antwortet ich weiß es nicht aber erster Treffer ist richtig.
+Frage 2 = (1) Die Antwort ist richtig, und es wird aber nur noch die EA als 3. Treffer zurückgegeben und die passende Stelle im Dokument gefunden, aber mit falscher Seitenzahl.
+Frage 3 = (1) Die Antwort ist richtig, es wird weiter beim 3. Treffer die erwartete Antwort zurückgegeben.
+Frage 4 = (1) Die Antwort ist richtig, es wird das gesuchte Dokument als 3. Treffer gefunden.
+Frage 5 = (0.5) Die Antwort ist richtig, es wird die richtige Seite als 1. Treffer angezeigt mit passenden Textstellen, aber es wird nicht die EA zurückgegeben. Das Bereinigen sorgt dafür dass "Überanpassung: Modell zu komplex -> ..."" verworfen wird.
+Frage 6 = (0,5) Das Modell antwortet mit Ja, was nun richtig ist. Es werden auch passende Stellen angezeigt zur k Größe und der Entscheidungsgrenze angezeigt. Aber die EA wird nicht zurückgegeben.
+
+Weitere Fragen:
+Frage 7 = (1) Antwort ist richtig, erster Treffer ist korrekt.
+Frage 8 = (1) Antwort ist richtig, erster Treffer ist korrekt.
+Frage 9 = (0,5) Die Antwort ist an sich richtig, aber nicht so wie die EA. Der 4. und 5 Treffer beeinhalten die EA. Allerdings ist heir das Problem das sie doppelt sind.
+Frage 10 = (0.5) Die Antwort ist an dich richtig, die EA ist als 3. Treffer, dann 4. und 5. Treffer und nicht ganz vollständig.
+
+
+Ausblick für weitere Entwicklung:
+-Gewichtete Suche mit Whoosh einbauen.
+-Chunksize und Window Finetuning
+-Wiederholungen wie https://ds-course-book.pages.dev/Linear_Models_Regularization, Datum und Uhrzeit entfernen
+
+
+Aufbau:
+1.Chroma, Embeddings (Huggingface) = semantische Ähnlichkeit
+mit build_index.py: PDF wird bereinigt, chunked, embedded und in Chroma gespeichert.
+(für semantische Nähe)
+
+2.Whoosh (Bm25/IDF) = mit Gewichtung, seltene Begriffe, häufige BEgriffe
+-für Vorfilterung, welche Dokumente enthalten den Begriff
+-Ranking BM25 Score mit Bewertung
+Whoosh speichert seinen eigenen Index in indexdir (getrennt von chroma).
+mit build_whoosh_index.py:
+(Fuer Schlagwortrelevanz)
+
+
+
+
+
+--------------
+

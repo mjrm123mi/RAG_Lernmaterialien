@@ -7,7 +7,6 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 
-
 DATA_DIR = "Data"
 CHROMA_DIR = "chroma_db"
 COLLECTION_NAME = "pdfs"
@@ -16,13 +15,27 @@ EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-mpnet-base
 def load_documents():
     loader = PyPDFDirectoryLoader(DATA_DIR)
     docs = loader.load()
+
+    # Textbereinigung pro Seite
+    for doc in docs:
+        doc.page_content = clean_text(doc.page_content)
+
     return docs
+
+# Preprocessing
+def clean_text(text: str) -> str:
+    text = text.lower()
+    for ch in ["?", "-", "\n"]: #"-" hat Einfluss auf Frage 6
+        text = text.replace(ch, " ")
+    # Mehrere Leerzeichen auf eins reduzieren
+    text = " ".join(text.split())
+    return text
 
 
 def split_documents(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
+        chunk_size=1000, #500testen (für kürzere fokussierte Abschniutte was für Frgaen von konkreten Definitionen gut wär)
+        chunk_overlap=200, #100testen
         separators=["\n\n", "\n", ". ", "! ", "? ", " "],
     )
     return splitter.split_documents(docs)
