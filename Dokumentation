@@ -199,3 +199,9 @@ Frage 3 = (1) Die Antwort ist richtig, es wird weiter beim 3. Treffer die erwart
 Frage 4 = (1) Die Antwort ist richtig, es wird das gesuchte Dokument als 3. Treffer gefunden.
 Frage 5 = (0.5) Die Antwort ist richtig, es wird die richtige Seite als 1. Treffer angezeigt mit passenden Textstellen, aber es wird nicht die EA zurückgegeben. Das Bereinigen sorgt dafür dass "Überanpassung: Modell zu komplex -> ..."" verworfen wird.
 Frage 6 = (0,5) Das Modell antwortet mit Ja, was nun richtig ist. Es werden auch passende Stellen angezeigt zur k Größe und der Entscheidungsgrenze angezeigt. Aber die EA wird nicht zurückgegeben.
+
+Weitere Fragen:
+Frage 7 = (1) Antwort ist richtig, erster Treffer ist korrekt.
+Frage 8 = (1) Antwort ist richtig, erster Treffer ist korrekt.
+Frage 9 = (0,5) Die Antwort ist an sich richtig, aber nicht so wie die EA. Der 4. und 5 Treffer beeinhalten die EA. Allerdings ist heir das Problem das sie doppelt sind.
+Frage 10 = (0.5) Die Antwort ist an dich richtig, die EA ist als 3. Treffer, dann 4. und 5. Treffer und nicht ganz vollständig.
