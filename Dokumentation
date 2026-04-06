@@ -210,6 +210,8 @@ Frage 10 = (0.5) Die Antwort ist an dich richtig, die EA ist als 3. Treffer, dan
 Ausblick für weitere Entwicklung:
 -Gewichtete Suche mit Whoosh einbauen.
 -Chunksize und Window Finetuning
+-Wiederholungen wie https://ds-course-book.pages.dev/Linear_Models_Regularization, Datum und Uhrzeit entfernen
+
 
 Aufbau:
 1.Chroma, Embeddings (Huggingface) = semantische Ähnlichkeit
