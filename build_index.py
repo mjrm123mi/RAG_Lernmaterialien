@@ -16,9 +16,11 @@ def load_documents():
     loader = PyPDFDirectoryLoader(DATA_DIR)
     docs = loader.load()
 
-    # Textbereinigung pro Seite
+    # Textbereinigung pro Seite und Korrektur der Seitenzahl (weil PyPDFDirecteryLoader bei 0 beginnt)
     for doc in docs:
         doc.page_content = clean_text(doc.page_content)
+        if "page" in doc.metadata and isinstance(doc.metadata["page"], int):
+            doc.metadata["page"] = doc.metadata["page"] + 1
 
     return docs
 
