@@ -40,10 +40,22 @@ eval_data = [
         "relevant_docs": ["Pruefungsvorbereitung"]
     },
     {
-        "query": "Sind Validierungsdaten das gleiche wie Testdaten?",
-        "expected_answer": "Nein. Validierungsdaten werden während der Modellentwicklung genutzt.",
-        "relevant_docs": ["Modellkomplexität"]
+        "query": "Wofür wird Machine Learning verwendet?",
+        "expected_answer": "Seit einigen Jahren ist Machine Learning (ML) zu einem Standardwerkzeug für fast alle Aufgaben geworden, bei denen Informationen aus Daten extrahiert werden müssen",
+        "relevant_docs": ["Einführung in Machinelles Lernen"]
     },
+{
+        "query": "Was ist ein Domain Set?",
+        "expected_answer": "Urbildmenge",
+        "relevant_docs": ["Einführung in Machinelles Lernen"]
+    },
+
+{
+        "query": "Wo kommt die IQR Regel her?",
+        "expected_answer": "von John Tukey",
+        "relevant_docs": ["Data Preprocessing"]
+    },
+
 ]
 
 

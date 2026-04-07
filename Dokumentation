@@ -1,5 +1,7 @@
 Evaluation: Groundedness
 
+Sprint 1:
+
 Testfragen:
 EA = Erwartete Antwort
 
@@ -106,7 +108,7 @@ Gleiches gilt für die Frage 5. Vorallem weil Overfitting ein englischer Begriff
 da es verschiedene Definitionen von Overfitting gibt und das Modell möglicherweise Schwierigkeiten hat,
 die richtige Stelle zu identifizieren. Es könnte auch sein, dass die ungüngstigen Formatierungen in den PDFs das Retrieval erschweren.
 
-
+Sprint2:
 TODO: Spezifischere Fragen stellen die auf deutsch sind und Performance verbessern
 
 Allgemineere Fragen funktionieren nicht so gut, BERT kann die Nähe schlechter einscghätzen. Top k treffer enthalten irgentwas mit ML aber nicht das Dokument oder die Stelle.
@@ -117,12 +119,13 @@ Zeilenumbrüche problen?
 -vlt kleinere chunks und overlap verschieden
 -Wie deinfiert das Dokument DS Overfitting?
 
-
+Sprint 3:
 Anderes Modell:
 Frage 1 = (0) (1) Das Modell antwortet zwar dass es nicht weiß, aber zeigt bei Treffer 1 das richtige Dokument mit richtiger Textstelle an.
 Frage 2 = (0.5) (0.5)
 Frage 3 = (1) (0)
 
+Sprint4:
 Ab hier nochmal Chunks auf 800 angepasst.
 Frage 1 (0)
 Frage 2 = (0.5)
@@ -139,7 +142,7 @@ Frage 4 = (0)
 Frage 5 = (0.5)
 Die Perfromance wird auch nicht mit größerem k =10 und kleinerem Chunk=800 besser.
 
-
+Sprint 5:
 Daten verändert:
 9 Artikel von arxiv.org und ein eigenes DS-PruefungsfragenText Dokument
 Frage 1 (0)
@@ -225,7 +228,7 @@ Whoosh speichert seinen eigenen Index in indexdir (getrennt von chroma).
 mit build_whoosh_index.py:
 (Fuer Schlagwortrelevanz)
 
-
+Sprint 6:
 Fix: Seitenzahlen korrigiert:
 
 Seitenanzahl gefixt, index +1
@@ -235,7 +238,7 @@ Die Korrektur wird gemacht bevor die Chunks erzeugt werden und es in Chroma gesp
 
 
 
---------------
+Sprint 7:
 Zum b) Automatische Metriken
 -Retrieval: Precision@k, Recall@k
 -Antwortqualität: Cosine Similarity
@@ -291,9 +294,11 @@ Das Automatische Retrieval funktioniert gut für spezifische Fragen. Teilweise s
 Die Cosinus Similarity ist im Schnitt 0.681.
 
 Der Recall liegt bei 1.00 was sehr hoch ist. Das richtige Dokument wird immer gefunden.
+TODO: Das ist ungewöhnlich, wenn Zeit das nochmal überprüfen.
 Die Precision ist niedrig, weil auch irrelevante Treffer unter den Top-k sind.
 Durch Finetuning des k's, chunking, gewichtete Suche (z.b. mit BM25, Whoosh)
 aber auch weniger verruschte PDFs und feinere Bereinigung könnte die Precision verbessert werden.
 
 Die manuelle Evaluation zeigt, dass der RAG inhaltlich, semantisch korrekte Antworten liefert. Bei sehr allgemeinen Fragen gibt es aber Schweirigkeiten.
-todo: Tabelle einfuegen + bei manueller Bewertung a) Relevanz und b) Faktentreue (1-5)/ Bezug zu Quellen einfuegen (1-5)
+
+Weitere Fragen und die finale Evaluation habe ich in den Kurzbericht eingefuget.
