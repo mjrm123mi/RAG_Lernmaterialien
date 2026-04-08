@@ -3,6 +3,9 @@
 Dieses Projekt stellt einen RAG (Retrieval-Augmented-Generation) fürs Lernen mit eigen Unterlagen bereit. 
 Es können eigene PDFs (Vorlesungsfolien, Notizen usw.) in den Ordner `Data/` gelegt und dann Fragen dazu gestellt werden.
 Zudem können mithilfe einer Frage passende Quellen und Seitenzahlen dazu gefunden werden.
+
+<img src="EinflussHyperparameterFrage3.png" alt="Einfluss von Hyperparametern – Beispiel Frage 3" width="400" />
+
 ---
 ## 1. Vorbereitung
 
