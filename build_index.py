@@ -36,8 +36,8 @@ def clean_text(text: str) -> str:
 
 def split_documents(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000, #500testen (für kürzere fokussierte Abschniutte was für Frgaen von konkreten Definitionen gut wär)
-        chunk_overlap=200, #100testen
+        chunk_size=1000,
+        chunk_overlap=200,
         separators=["\n\n", "\n", ". ", "! ", "? ", " "],
     )
     return splitter.split_documents(docs)
@@ -46,7 +46,7 @@ def split_documents(docs):
 def build_vectorstore(chunks):
     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
 
-    # Optional: alten Index löschen und komplett neu aufbauen
+    # alten Index löschen und komplett neu aufbauen
     if os.path.exists(CHROMA_DIR):
         shutil.rmtree(CHROMA_DIR)
 
