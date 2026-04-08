@@ -22,18 +22,10 @@ Accuracy, Recall, Precision F2 Score ausrechnen und selbst prüfen ob Antworten 
 Ist unter den Chunks mindestens einer relevant?
 Eigene manuelle Stichproben
 
-LLM as judge eher nicht, weil fragwürdig ob es das kann
+LLM as judge eher nicht
 
 1. Retrieval bewerten, ob richtiges Dokument gefunden wird
 2. Prüfen ob Antwort richtig ist
 3. Halluziniert es?
 4. Mischung aus einfachen, komplexen und mehrdeutigen Fragen 
 5. bilder können nicht beantwortet werden
-
-
-
-
-Fragen:
-
-1. Worum geht es in dem PDF?
-2. 

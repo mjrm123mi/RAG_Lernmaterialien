@@ -1,12 +1,10 @@
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from langchain_huggingface import HuggingFaceEmbeddings
-
 from app import retrieve_with_sources, format_context, generate_answer
 
 K = 5
 EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
-
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
 
 
@@ -82,19 +80,11 @@ def recall_at_k(retrieved_docs, relevant_docs, k=5):
 
 
 def evaluate_single(query, expected_answer, relevant_docs):
-    # Retrieval
     docs = retrieve_with_sources(query)
-
-    # Context bauen
     context = format_context(docs)
-
-    # Antwort generieren
     answer = generate_answer(query, context)
 
-    # Precision@k
     p_at_k = precision_at_k(docs, relevant_docs, K)
-
-    #Recall
     r_at_k = recall_at_k(docs, relevant_docs, K)
 
     # Cosine Similarity
